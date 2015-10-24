@@ -5478,6 +5478,13 @@ public final class Settings {
         public static final String SHOW_VOWIFI_ICON = "show_vowifi_icon";
 
         /**
+         * Disable power menu on secure lock screens
+         *
+         * @hide
+         */
+        public static final String LOCK_POWER_MENU_DISABLED = "lockscreen_power_menu_disabled";
+
+        /**
          * Three Finger Gesture from Oppo
          * @hide
          */
