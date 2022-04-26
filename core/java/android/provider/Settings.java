@@ -5292,6 +5292,7 @@ public final class Settings {
         };
 
         /**
+<<<<<<< HEAD
          * Wheter to show network traffic indicator in statusbar
          * @hide
          */
