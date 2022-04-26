@@ -5322,6 +5322,7 @@ public final class Settings {
          public static final String NETWORK_TRAFFIC_FONT_SIZE = "network_traffic_font_size";
 
         /**
+<<<<<<< HEAD
          * Show network traffic indicator
          * 0 - Statusbar (default)
          * 1 - QS Header
@@ -5597,7 +5598,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VIBRATE_ON_CALLWAITING);
             PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
             PRIVATE_SETTINGS.add(COLOR_BUCKET_OVERLAY);
-            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_VIEW_LOCATION);
         }
 
         /**

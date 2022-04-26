@@ -31,7 +31,6 @@ import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.TrafficStats;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.Message;
@@ -82,8 +81,6 @@ public class NetworkTraffic extends TextView {
     private int mTintColor;
     private boolean mScreenOn = true;
 
-    private boolean mTrafficInHeaderView;
-
     private Handler mTrafficHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -130,8 +127,8 @@ public class NetworkTraffic extends TextView {
                     setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                     setText(output);
                 }
-                updateTextSize();
-                updateVisibility();
+                setVisibility(View.VISIBLE);
+				updateTextSize();
             }
 
             // Post delayed message to refresh in ~1000ms
@@ -193,9 +190,6 @@ public class NetworkTraffic extends TextView {
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.NETWORK_TRAFFIC_ARROW), false,
-                    this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System
-                    .getUriFor(Settings.System.NETWORK_TRAFFIC_VIEW_LOCATION), false,
                     this, UserHandle.USER_ALL);
         }
 
@@ -287,12 +281,7 @@ public class NetworkTraffic extends TextView {
     }
 
     private void updateSettings() {
-        final ContentResolver resolver = getContext().getContentResolver();
-        mTrafficInHeaderView = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_VIEW_LOCATION, 0,
-                UserHandle.USER_CURRENT) == 1;
-        updateVisibility();
-        updateTextSize();
+ 	    updateTextSize();
         if (mIsEnabled) {
             if (mAttached) {
                 totalRxBytes = TrafficStats.getTotalRxBytes();
@@ -304,6 +293,7 @@ public class NetworkTraffic extends TextView {
         } else {
             clearHandlerCallbacks();
         }
+        setVisibility(View.GONE);
     }
 
     private void setMode() {
@@ -320,9 +310,6 @@ public class NetworkTraffic extends TextView {
         mShowArrow = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_ARROW, 1,
 	        UserHandle.USER_CURRENT) == 1;
-        mTrafficInHeaderView = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_VIEW_LOCATION, 0,
-                UserHandle.USER_CURRENT) == 1;
     }
 
     private void clearHandlerCallbacks() {
@@ -369,6 +356,7 @@ public class NetworkTraffic extends TextView {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)txtSize);
     }
 
+<<<<<<< HEAD
     private void updateVisibility() {
         if (mIsEnabled && mTrafficInHeaderView) {
             setVisibility(View.VISIBLE);
@@ -382,6 +370,8 @@ public class NetworkTraffic extends TextView {
         updateTrafficDrawable();
     }
 
+=======
+>>>>>>> parent of 9f2c0d999043... NetworkTraffic: Allow user to choose positioning [1/2]
     public void onDensityOrFontScaleChanged() {
         final Resources resources = getResources();
         txtImgPadding = resources.getDimensionPixelSize(R.dimen.net_traffic_txt_img_padding);
