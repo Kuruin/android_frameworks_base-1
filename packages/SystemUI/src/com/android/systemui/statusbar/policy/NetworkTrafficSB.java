@@ -473,7 +473,8 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
 
     @Override
     public void onDarkChanged(Rect area, float darkIntensity, int tint) {
-        setTextColor(DarkIconDispatcher.getTint(area, this, tint));
+        mTintColor = DarkIconDispatcher.getTint(area, this, tint);
+        setTextColor(mTintColor);
         updateTrafficDrawable();
     }
 
