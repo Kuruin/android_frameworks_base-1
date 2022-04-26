@@ -5316,6 +5316,7 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_ARROW = "network_traffic_arrow";
 
         /**
+<<<<<<< HEAD
          * What size to show for network traffic indicator in statusbar
          * @hide
          */
